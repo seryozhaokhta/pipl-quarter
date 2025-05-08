@@ -1,75 +1,65 @@
-# Nuxt Minimal Starter
+Разработка главного экрана с анимацией и подготовкой к интеграции с API.
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+##  Стек
 
-## Setup
+- **Nuxt 3** (SSR)
+- **TypeScript**
+- **Tailwind CSS**
+- **GSAP**
 
-Make sure to install dependencies:
+##  Установка и запуск
 
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+---
 
-Build the application for production:
+##  Компоненты
 
-```bash
-# npm
-npm run build
+### `AnimatedIntro.vue`
 
-# pnpm
-pnpm build
+Компонент заставки с анимацией 6 масок и SVG-заголовком.
 
-# yarn
-yarn build
+- Использует `gsap.ticker` для непрерывной анимации масок.
+- Заголовок появляется после окончания анимации, слева направо.
+- Без возврата анимации в начало.
+- Полностью адаптивен (маски, позиция заголовка и масштаб под экран).
+- Использует статические изображения `/hero/slide-1.png` – `/slide-6.png`.
 
-# bun
-bun run build
-```
+### `BottomFilterBar.vue`
 
-Locally preview production build:
+Компонент фильтрации квартир. Включает 3 селектора и кнопку с количеством результатов.
 
-```bash
-# npm
-npm run preview
+####  Интеграция с API
 
-# pnpm
-pnpm preview
+- Использует `useFetch('/api/filters')`.
+- Поддерживает fallback-мок, если API недоступен.
+- API возвращает списки фильтров и общее количество квартир.
 
-# yarn
-yarn preview
+####  Поддержка двусторонней привязки
 
-# bun
-bun run preview
-```
+| Пропс        | Тип     | Описание                              |
+|--------------|---------|----------------------------------------|
+| modelValue   | object  | Содержит выбранные значения: `house`, `room`, `area` |
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+####  События
+
+| Событие            | Аргументы               | Описание                          |
+|--------------------|-------------------------|-----------------------------------|
+| `update:modelValue`| `{ house, room, area }` | Отдаёт объект выбранных фильтров |
+
+---
+
+##  Документация
+
+Каждый компонент использует `script setup`, изолированную логику и scoped-стили.
+
+### Расширяемость
+
+- Анимации вынесены в `useGsapTimeline.ts` и `AnimatedIntro.vue`, легко адаптируются под любые изображения.
+- Селекторы переиспользуемы и стилизованы через Tailwind и shadcn-vue.
+- Поддержка мок-данных для разработки без бекенда.
+
+## 

@@ -1,27 +1,56 @@
 <template>
-  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[1131px] bg-white z-30 shadow-xl overflow-hidden
-               flex md:flex-row flex-col items-stretch h-auto md:h-[80px] px-[8px] sm:px-[16px] md:px-0">
-    <HouseSelector v-model="selectedHouse" :options="houses" class="w-full md:w-1/4 border-b md:border-b-0" />
-    <RoomSelector v-model="selectedRoom" :options="rooms" class="w-full md:w-1/4 border-b md:border-b-0" />
-    <AreaSelector v-model="selectedArea" :options="areas" class="w-full md:w-1/4 border-b md:border-b-0" />
-    <FlatCounterButton :count="flatsCount" class="w-full md:w-1/4" />
+  <div v-if="!loading && !error" class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[1131px] bg-white z-30 shadow-xl overflow-hidden
+             flex md:flex-row flex-col items-stretch h-auto md:h-[80px] px-[8px] sm:px-[16px] md:px-0">
+    <HouseSelector v-model="selectedHouse" :options="filters.houses" class="w-full md:w-1/4 border-b md:border-b-0" />
+    <RoomSelector v-model="selectedRoom" :options="filters.rooms" class="w-full md:w-1/4 border-b md:border-b-0" />
+    <AreaSelector v-model="selectedArea" :options="filters.areas" class="w-full md:w-1/4 border-b md:border-b-0" />
+    <FlatCounterButton :count="filters.count" class="w-full md:w-1/4" />
   </div>
+  <div v-else class="text-center text-sm py-4 text-gray-500">Загрузка фильтров...</div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, watchEffect } from 'vue';
+import { useFetch } from '#app';
 import HouseSelector from './HouseSelector.vue';
 import RoomSelector from './RoomSelector.vue';
 import AreaSelector from './AreaSelector.vue';
 import FlatCounterButton from './FlatCounterButton.vue';
 
-const houses = ['Все дома', 'Корпус 1', 'Корпус 2'];
-const rooms = ['1 комната', '2 комнаты', '3+ комнат'];
-const areas = ['30–40 м²', '40–60 м²', '60+ м²'];
+interface FiltersData {
+  houses: string[];
+  rooms: string[];
+  areas: string[];
+  count: number;
+}
 
-const selectedHouse = ref(houses[0]);
-const selectedRoom = ref(rooms[0]);
-const selectedArea = ref(areas[0]);
+const props = defineProps<{ filters?: FiltersData }>();
+const emit = defineEmits<{
+  (e: 'update:filters', value: FiltersData): void;
+}>();
 
-const flatsCount = computed(() => 126);
+const { data: apiData, pending, error } = useFetch<FiltersData>('/api/filters');
+
+const defaultFilters: FiltersData = {
+  houses: ['Все дома', 'Корпус 1', 'Корпус 2'],
+  rooms: ['1 комната', '2 комнаты', '3+ комнат'],
+  areas: ['30–40 м²', '40–60 м²', '60+ м²'],
+  count: 126,
+};
+
+const filters = computed(() => props.filters || apiData.value || defaultFilters);
+const loading = computed(() => pending.value && !props.filters);
+
+const selectedHouse = ref(filters.value.houses[0]);
+const selectedRoom = ref(filters.value.rooms[0]);
+const selectedArea = ref(filters.value.areas[0]);
+
+watchEffect(() => {
+  emit('update:filters', {
+    houses: filters.value.houses,
+    rooms: filters.value.rooms,
+    areas: filters.value.areas,
+    count: filters.value.count,
+  });
+});
 </script>
