@@ -17,13 +17,6 @@
 </template>
 
 <script setup lang="ts">
-import {
-    Select,
-    SelectTrigger,
-    SelectContent,
-    SelectItem,
-    SelectValue,
-} from '~/components/ui/select'
 
 defineProps<{ label: string; options: string[] }>()
 const model = defineModel<string>()
