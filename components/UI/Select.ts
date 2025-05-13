@@ -1,5 +1,0 @@
-export { default as Select } from './select/Select.vue'
-export { default as SelectContent } from './select/SelectContent.vue'
-export { default as SelectTrigger } from './select/SelectTrigger.vue'
-export { default as SelectItem } from './select/SelectItem.vue'
-export { default as SelectValue } from './select/SelectValue.vue'
