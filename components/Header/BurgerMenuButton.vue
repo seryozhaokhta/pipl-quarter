@@ -1,7 +1,7 @@
 <template>
   <div class="relative sm:static">
 
-    <button class="w-10 h-[24px] relative z-50" @mouseenter="animateLines" @click="toggleMenu" aria-label="Меню">
+    <button class="w-10 h-[24px] relative z-50" aria-label="Меню" @mouseenter="animateLines" @click="toggleMenu">
       <span ref="lineTop" class="line"><span class="bar" /></span>
       <span ref="lineBottom" class="line"><span class="bar" /></span>
     </button>
@@ -16,7 +16,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import gsap from 'gsap'
 import CallToActionButton from '~/components/Header/CallToActionButton.vue'
 import SelectApartmentButton from '~/components/Header/SelectApartmentButton.vue'

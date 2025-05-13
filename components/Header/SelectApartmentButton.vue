@@ -4,14 +4,13 @@
             class="relative link-wrapper inline-block text-[14px] sm:text-[15px] md:text-[16px] font-normal leading-none text-black sm:text-white"
             @mouseenter="underlineIn" @mouseleave="underlineOut">
             {{ label }}
-            <span class="underline-bar" ref="underlineBar" />
+            <span ref="underlineBar" class="underline-bar" />
         </span>
         <IconArrow class="w-4 h-4 text-black sm:text-white" />
     </button>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
 import gsap from 'gsap';
 import IconArrow from "../Icons/IconArrow.vue";
 

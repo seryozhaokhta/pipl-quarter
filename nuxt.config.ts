@@ -1,10 +1,11 @@
 export default defineNuxtConfig({
   css: ['~/assets/css/tailwind.css'],
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {}
-    }
-  },
+
+  components: [
+    { path: '~/components', pathPrefix: false },
+  ],
+
+  nitro: { compatibilityDate: '2025-05-12' },
+  postcss: { plugins: { tailwindcss: {}, autoprefixer: {} } },
   devtools: { enabled: true },
 })

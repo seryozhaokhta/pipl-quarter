@@ -8,7 +8,7 @@
         <span class="text-[12px] sm:text-[13px] font-normal relative link-wrapper mr-[30px]" @mouseenter="underlineIn"
           @mouseleave="underlineOut">
           Квартиры месяца со скидкой -30%
-          <span class="underline-bar" ref="underlineBar" />
+          <span ref="underlineBar" class="underline-bar" />
         </span>
       </div>
     </div>
@@ -18,21 +18,21 @@
       <span class="text-[12px] sm:text-[13px] md:text-[14px] font-normal relative link-wrapper"
         @mouseenter="underlineIn" @mouseleave="underlineOut">
         Квартиры месяца со скидкой -30%
-        <span class="underline-bar" ref="underlineBar" />
+        <span ref="underlineBar" class="underline-bar" />
       </span>
     </div>
 
-    <button @click="closeBar" @mouseenter="icon?.hoverIn()" @mouseleave="icon?.hoverOut()" aria-label="Закрыть"
-      class="absolute right-[20px] sm:right-[32px] md:right-[40px] top-1/2 -translate-y-1/2 w-[22px] h-[22px] flex items-center justify-center text-gray-500 hover:text-black">
+    <button aria-label="Закрыть"
+      class="absolute right-[20px] sm:right-[32px] md:right-[40px] top-1/2 -translate-y-1/2 w-[22px] h-[22px] flex items-center justify-center text-gray-500 hover:text-black"
+      @click="closeBar" @mouseenter="icon?.hoverIn()" @mouseleave="icon?.hoverOut()">
       <IconClose ref="icon" />
     </button>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import gsap from "gsap";
-import UiBadge from "~/components/UI/UiBadge.vue";
+import UiBadge from "~/components/ui/UiBadge.vue";
 import IconClose from "~/components/Icons/IconClose.vue";
 
 const visible = ref(true);

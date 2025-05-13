@@ -2,19 +2,18 @@
     <button ref="button" class="fixed 
            bottom-[285px] right-[12px]
            lg:bottom-20 lg:right-10
-           w-[52px] h-[52px] rounded-full flex items-center justify-center z-50" @mouseenter="animateIn"
-        @mouseleave="animateOut" aria-label="Позвонить">
+           w-[52px] h-[52px] rounded-full flex items-center justify-center z-50" aria-label="Позвонить"
+        @mouseenter="animateIn" @mouseleave="animateOut">
 
         <div ref="pulse" class="absolute w-[52px] h-[52px] rounded-full bg-[#FDC300]/20 z-[-1]" />
 
         <div class="w-[52px] h-[52px] rounded-full bg-[#FDC300] flex items-center justify-center shadow-lg">
-            <img src="/phoneIcon.svg" alt="Phone Icon" class="w-6 h-6" />
+            <img src="/phoneIcon.svg" alt="Phone Icon" class="w-6 h-6">
         </div>
     </button>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import gsap from 'gsap'
 
 const pulse = ref<HTMLElement | null>(null)

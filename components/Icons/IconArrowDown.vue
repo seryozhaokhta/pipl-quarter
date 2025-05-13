@@ -9,13 +9,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue';
 import gsap from 'gsap';
 
 defineProps<{ isOpen: boolean }>();
 
 const arrow = ref<SVGGElement | null>(null);
-let rotation = ref(0);
+const rotation = ref(0);
 
 function toggleRotate() {
     rotation.value = rotation.value === 0 ? 180 : 0;
