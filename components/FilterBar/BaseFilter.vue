@@ -23,7 +23,7 @@ import {
     SelectContent,
     SelectItem,
     SelectValue,
-} from '~/components/ui/select/index'
+} from '~/components/ui/Select'
 
 defineProps<{ label: string; options: string[] }>()
 const model = defineModel<string>()
