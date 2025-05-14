@@ -22,8 +22,8 @@ import {
     SelectTrigger,
     SelectContent,
     SelectItem,
-    SelectValue,
-} from '~/components/ui/select'
+    SelectValue
+} from '~/components/ui/select/index'
 
 defineProps<{ label: string; options: string[] }>()
 const model = defineModel<string>()
