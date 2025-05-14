@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
 import gsap from "gsap";
-import UiBadge from "~/components/ui/UiBadge.vue";
+import UiBadge from "~/components/Header/UiBadge.vue";
 import IconClose from "~/components/Icons/IconClose.vue";
 
 const visible = ref(true);
