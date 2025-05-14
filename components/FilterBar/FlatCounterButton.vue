@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { Button } from '~/components/ui/button/index'
+import Button from '~/components/ui/button/Button.vue'
 import IconArrow from '~/components/Icons/IconArrow.vue'
 
 defineProps<{ count: number }>()
