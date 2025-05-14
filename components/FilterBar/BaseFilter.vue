@@ -17,11 +17,13 @@
 </template>
 
 <script setup lang="ts">
-import Select from '../ui/select/Select.vue'
-import SelectTrigger from '../ui/select/SelectTrigger.vue'
-import SelectContent from '../ui/select/SelectContent.vue'
-import SelectItem from '../ui/select/SelectItem.vue'
-import SelectValue from '../ui/select/SelectValue.vue'
+import {
+    Select,
+    SelectTrigger,
+    SelectContent,
+    SelectItem,
+    SelectValue,
+} from '~/components/ui/select'
 
 defineProps<{ label: string; options: string[] }>()
 const model = defineModel<string>()
