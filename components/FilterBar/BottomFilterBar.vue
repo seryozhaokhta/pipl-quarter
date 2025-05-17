@@ -2,13 +2,9 @@
   <div v-if="!loading && !error" class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[1131px] bg-white z-30
            shadow-xl overflow-hidden flex md:flex-row flex-col items-stretch
            h-auto md:h-[80px] px-[8px] sm:px-[16px] md:px-0">
-
     <BaseFilter v-model="selectedHouse" label="Дом" :options="filters.houses" class="w-full md:w-1/4" />
-
     <BaseFilter v-model="selectedRoom" label="Комнатность" :options="filters.rooms" class="w-full md:w-1/4" />
-
     <BaseFilter v-model="selectedArea" label="Площадь" :options="filters.areas" class="w-full md:w-1/4" />
-
     <FlatCounterButton :count="filters.count" class="w-full md:w-1/4" />
   </div>
 
@@ -20,6 +16,7 @@
 <script setup lang="ts">
 import BaseFilter from './BaseFilter.vue'
 import FlatCounterButton from './FlatCounterButton.vue'
+import { useFetch } from '#app'
 
 interface FiltersData {
   houses: string[]
