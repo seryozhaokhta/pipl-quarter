@@ -32,8 +32,6 @@
 
 <script setup lang="ts">
 import gsap from "gsap";
-import UiBadge from "~/components/Header/UiBadge.vue";
-import IconClose from "~/components/Icons/IconClose.vue";
 
 const visible = ref(true);
 const bar = ref<HTMLElement | null>(null);

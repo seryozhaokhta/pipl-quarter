@@ -12,7 +12,6 @@
 
 <script setup lang="ts">
 import gsap from 'gsap';
-import IconArrow from "../Icons/IconArrow.vue";
 
 defineProps<{ label: string }>();
 

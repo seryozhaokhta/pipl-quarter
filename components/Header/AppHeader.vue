@@ -16,9 +16,4 @@
   </header>
 </template>
 
-<script setup lang="ts">
-import LogoMark from "~/components/Header/LogoMark.vue";
-import CallToActionButton from "~/components/Header/CallToActionButton.vue";
-import SelectApartmentButton from "~/components/Header/SelectApartmentButton.vue";
-import BurgerMenuButton from "~/components/Header/BurgerMenuButton.vue";
-</script>
+<script setup lang="ts"></script>

@@ -17,8 +17,6 @@
 
 <script setup lang="ts">
 import gsap from 'gsap'
-import CallToActionButton from '~/components/Header/CallToActionButton.vue'
-import SelectApartmentButton from '~/components/Header/SelectApartmentButton.vue'
 
 const isOpen = ref(false)
 const lineTop = ref<HTMLElement | null>(null)

@@ -20,7 +20,6 @@
 </template>
 
 <script setup lang="ts">
-import type { ComponentPublicInstance } from 'vue'
 import gsap from 'gsap'
 
 const NUM = 6
