@@ -16,7 +16,6 @@
 <script setup lang="ts">
 import BaseFilter from './BaseFilter.vue'
 import FlatCounterButton from './FlatCounterButton.vue'
-import { useFetch } from '#app'
 
 interface FiltersData {
   houses: string[]
