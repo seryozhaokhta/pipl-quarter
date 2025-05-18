@@ -3,7 +3,7 @@
     <PromoTopBar />
     <AppHeader />
     <AnimatedIntro />
-    <BottomFilterBar />
+    <FilterBar />
     <FloatingCallButton />
   </div>
 </template>
