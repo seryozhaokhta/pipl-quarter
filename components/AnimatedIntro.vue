@@ -11,8 +11,9 @@
       </div>
 
       <div ref="headline"
-        class="headline absolute top-[55%] sm:top-[70%] left-0 w-full flex justify-center -translate-y-1/2 z-20 opacity-0 translate-x-[-80px]">
-        <img src="/hero/title.svg" class="w-[95%] max-w-none select-none pointer-events-none" alt="Жилой квартал Пипл">
+        class="headline absolute top-[55%] sm:top-[70%] left-0 w-full flex justify-center -translate-y-1/2 z-20 opacity-1">
+        <img src="/hero/title.svg" class="w-[95%] max-w-none select-none pointer-events-none headline-mask"
+          alt="Жилой квартал Пипл">
       </div>
 
     </div>
@@ -44,7 +45,7 @@ function dynamicWidth(center: number) {
 let groupX = 0
 const widths = Array(NUM).fill(MIN_W)
 let frozen = false
-let headlineShown = false
+let headlineMasked = false
 let animationProgress = 0
 
 onMounted(async () => {
@@ -63,6 +64,13 @@ onMounted(async () => {
       },
     }
   })
+
+  if (headline.value) {
+    const maskImg = headline.value.querySelector('.headline-mask') as HTMLElement | null
+    if (maskImg) {
+      maskImg.style.clipPath = "inset(0 100% 0 0)"
+    }
+  }
 
   const update = (delta = 1) => {
     animationProgress = clamp(animationProgress + delta * 0.01, 0, 1)
@@ -92,14 +100,16 @@ onMounted(async () => {
       curX += widths[i]
     }
 
-    if (frozen && !headlineShown && headline.value) {
-      headlineShown = true
-      gsap.to(headline.value, {
-        x: 0,
-        opacity: 1,
-        duration: 1,
-        ease: 'power2.out',
-      })
+    if (frozen && !headlineMasked && headline.value) {
+      headlineMasked = true
+      const maskImg = headline.value.querySelector('.headline-mask') as HTMLElement | null
+      if (maskImg) {
+        gsap.to(maskImg, {
+          clipPath: "inset(0 0% 0 0)",
+          duration: 1,
+          ease: "power2.out"
+        })
+      }
     }
   }
 
@@ -115,5 +125,11 @@ onMounted(async () => {
 <style scoped>
 .headline {
   will-change: transform, opacity;
+}
+
+.headline-mask {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1s cubic-bezier(0.33, 1, 0.68, 1);
+  will-change: clip-path;
 }
 </style>
