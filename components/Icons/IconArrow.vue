@@ -1,11 +1,11 @@
 <template>
-    <div class="w-[22px] h-[22px] bg-[#FDC300] rounded-[4px] flex items-center justify-center group"
+    <div class="w-[22px] h-[22px] bg-[#FDC300] rounded-[4px] flex items-center justify-center"
         @mouseenter="animateArrow">
-        <svg class="w-[9px] h-[10px]" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path ref="head" d="M7.53369 4.8501L11.0342 8.3001L7.53369 11.7501" :stroke="color" :stroke-width="stroke"
+        <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg" class="block">
+            <path ref="head" d="M7.53369 4.8501L11.0342 8.3001L7.53369 11.7501" :stroke="color" stroke-width="1"
                 fill="none" stroke-linecap="round" stroke-linejoin="round" />
             <path ref="body" d="M10.9327 8.3H3.96606C2.30921 8.3 0.966064 6.95685 0.966064 5.3V0.25" :stroke="color"
-                :stroke-width="stroke" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
     </div>
 </template>
@@ -29,11 +29,9 @@ function animateArrow() {
     alreadyAnimated = true
 
     const paths = [body.value, head.value]
-
     paths.forEach((el, i) => {
         if (!el) return
         const length = el.getTotalLength()
-
         gsap.fromTo(
             el,
             { strokeDasharray: length, strokeDashoffset: 0 },

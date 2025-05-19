@@ -1,5 +1,5 @@
 <template>
-    <svg class="w-[18px] sm:w-[20px] md:w-[22px] h-[18px] sm:h-[20px] md:h-[22px] pointer-events-none"
+    <svg class="w-[12px] sm:w-[12px] md:w-[22px] h-[18px] sm:h-[20px] md:h-[22px] pointer-events-none"
         viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="1" y="0.5" width="21" height="21" rx="3.5" stroke="#282525" stroke-opacity="0.4" />
         <g ref="arrow" class="arrow">
