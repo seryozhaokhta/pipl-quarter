@@ -37,3 +37,27 @@ watch(
     v => emit('update:modelValue', v)
 );
 </script>
+
+<style scoped>
+:deep([role="combobox"]) {
+    border: none !important;
+    background: #fff;
+    box-shadow: none !important;
+}
+
+:deep(.lucide-chevron-down) {
+    background: #fff;
+    border: 2px solid #28252566 !important;
+    border-radius: 4px;
+    box-sizing: content-box;
+    padding: 3px;
+    margin-left: 8px;
+    stroke: #282525 !important;
+    stroke-width: 2.2 !important;
+}
+
+:deep(.lucide-chevron-down path) {
+    stroke: #282525 !important;
+    stroke-opacity: 1 !important;
+}
+</style>
