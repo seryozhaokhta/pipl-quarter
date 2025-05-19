@@ -47,7 +47,7 @@ watch(
 
 :deep(.lucide-chevron-down) {
     background: #fff;
-    border: 2px solid #28252566 !important;
+    border: 1px solid #28252566 !important;
     border-radius: 4px;
     box-sizing: content-box;
     padding: 3px;
